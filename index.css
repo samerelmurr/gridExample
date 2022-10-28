@@ -15,29 +15,37 @@ h1{
 
 .ad{
     background-color: #F5E97B;
+    grid-area: ad;
 }
 
 .navBar{
     background-color: #FF9898;
+    grid-area: navBar;
 }
 
 .mainContent{
     background-color: #81B8F9;
+    grid-area: mainContent;
 }
 
 .sideBar{
     background-color: #B681F9;
+    grid-area: sideBar;
 }
 
 .adFooter{
     background-color: #69EE9E;
+    grid-area: adFooter;
 }
 
 .footer{
     background-color: #B93363;
+    grid-area: footer;
 }
 
-.container{
+/*  Basic implimentation of a grid system  */
+
+/* .container{
     height: 100%;
     width: 100%;
     display: grid;
@@ -94,5 +102,48 @@ h1{
     .footer{
         grid-column: 1/ span 12;
         grid-row: 4;
+    }
+} */
+
+/* Grid Area Implimentaion */
+.container{
+    height: 100%;
+    width: 100%;
+    display: grid;
+
+    grid-template-rows: auto auto 1fr auto auto auto;
+
+    grid-template-areas:
+    "ad"
+    "navBar"
+    "mainContent"
+    "sideBar" 
+    "adFooter"
+    "footer"
+    ;
+    gap: 5px;
+}
+
+@media (min-width: 720px){
+    .container{
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas: 
+        "ad ad ad"
+        "navBar navBar navBar"
+        "sideBar mainContent mainContent"
+        "adFooter footer footer"
+        ;
+    }
+    
+}
+
+@media (min-width: 1020px){
+    .container{
+        grid-template-areas: 
+        "ad ad ad ad"
+        "sideBar navBar navBar adFooter"
+        "sideBar mainContent mainContent adFooter"
+        "footer footer footer footer"
+        ;
     }
 }
